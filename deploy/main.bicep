@@ -18,7 +18,7 @@ param deployRoleAssignment bool = true
 @description('Deploy the web application')
 param deployApi bool = true
 
-@description('Role definition ID for ACR pull role')
+@description('Role definition ID for ACR pull role.')
 param roleDefinitionId string = subscriptionResourceId(
   'Microsoft.Authorization/roleDefinitions',
   '7f951dda-4ed3-4680-a7ca-43fe172d538d'
