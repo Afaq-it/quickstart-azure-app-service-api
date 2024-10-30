@@ -1,0 +1,46 @@
+name: Deployment Preview
+
+run-name: >
+  ${{ github.workflow }}: ${{ github.event_name }} for ${{ github.ref_name }} by @${{ github.actor }}
+
+on:
+  push:
+    paths:
+      - 'deploy/**'
+  workflow_dispatch:
+
+permissions: 
+  id-token: write
+
+env:
+  AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+  AZURE_REGION: 'switzerlandnorth'
+
+jobs:
+  deploy-bicep:
+    runs-on: ubuntu-latest
+    environment: preview
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Azure CLI Login
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Set Azure Subscription
+        run: |
+          az account set --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Deploy Bicep Template
+        run: |
+          az deployment tenant create \
+            --name ${{ github.run_id }} \
+            --template-file deploy/main.bicep \
+            --location ${{ env.AZURE_REGION }} \
+            --parameters subIdSharedServices=${{ secrets.AZURE_SUBSCRIPTION_ID_SS }} subIdAzureLatency=${{ secrets.AZURE_SUBSCRIPTION_ID }}
+            --what-if
