@@ -1,0 +1,223 @@
+{
+    "eastus": {
+        "regionName": "East US",
+        "location": "Virginia, USA",
+        "pairedRegion": "West US",
+        "servicesAvailable": [
+            "Virtual Machines",
+            "Azure App Services",
+            "Azure Functions",
+            "Azure SQL Database",
+            "Azure Kubernetes Service",
+            "Azure Cosmos DB"
+        ]
+    },
+    "westus": {
+        "regionName": "West US",
+        "location": "California, USA",
+        "pairedRegion": "East US",
+        "servicesAvailable": [
+            "Virtual Machines",
+            "Azure App Services",
+            "Azure Functions",
+            "Azure SQL Database",
+            "Azure Kubernetes Service",
+            "Azure Cosmos DB"
+        ]
+    },
+    "centralus": {
+        "regionName": "Central US",
+        "location": "Iowa, USA",
+        "pairedRegion": "North Central US",
+        "servicesAvailable": [
+            "Virtual Machines",
+            "Azure App Services",
+            "Azure Functions",
+            "Azure SQL Database",
+            "Azure Kubernetes Service",
+            "Azure Cosmos DB"
+        ]
+    },
+    "northeurope": {
+        "regionName": "North Europe",
+        "location": "Ireland",
+        "pairedRegion": "West Europe",
+        "servicesAvailable": [
+            "Virtual Machines",
+            "Azure App Services",
+            "Azure Functions",
+            "Azure SQL Database",
+            "Azure Kubernetes Service",
+            "Azure Cosmos DB"
+        ]
+    },
+    "westeurope": {
+        "regionName": "West Europe",
+        "location": "Netherlands",
+        "pairedRegion": "North Europe",
+        "servicesAvailable": [
+            "Virtual Machines",
+            "Azure App Services",
+            "Azure Functions",
+            "Azure SQL Database",
+            "Azure Kubernetes Service",
+            "Azure Cosmos DB"
+        ]
+    },
+    "switzerlandnorth": {
+        "regionName": "Switzerland North",
+        "location": "Zurich, Switzerland",
+        "pairedRegion": "Switzerland West",
+        "servicesAvailable": [
+            "Virtual Machines",
+            "Azure App Services",
+            "Azure Functions",
+            "Azure SQL Database",
+            "Azure Kubernetes Service",
+            "Azure Cosmos DB"
+        ]
+    },
+    "switzerlandwest": {
+        "regionName": "Switzerland West",
+        "location": "Geneva, Switzerland",
+        "pairedRegion": "Switzerland North",
+        "servicesAvailable": [
+            "Virtual Machines",
+            "Azure App Services",
+            "Azure Functions",
+            "Azure SQL Database",
+            "Azure Kubernetes Service",
+            "Azure Cosmos DB"
+        ]
+    },
+    "southeastasia": {
+        "regionName": "Southeast Asia",
+        "location": "Singapore",
+        "pairedRegion": "East Asia",
+        "servicesAvailable": [
+            "Virtual Machines",
+            "Azure App Services",
+            "Azure Functions",
+            "Azure SQL Database",
+            "Azure Kubernetes Service",
+            "Azure Cosmos DB"
+        ]
+    },
+    "eastasia": {
+        "regionName": "East Asia",
+        "location": "Hong Kong",
+        "pairedRegion": "Southeast Asia",
+        "servicesAvailable": [
+            "Virtual Machines",
+            "Azure App Services",
+            "Azure Functions",
+            "Azure SQL Database",
+            "Azure Kubernetes Service",
+            "Azure Cosmos DB"
+        ]
+    },
+    "japaneast": {
+        "regionName": "Japan East",
+        "location": "Tokyo, Japan",
+        "pairedRegion": "Japan West",
+        "servicesAvailable": [
+            "Virtual Machines",
+            "Azure App Services",
+            "Azure Functions",
+            "Azure SQL Database",
+            "Azure Kubernetes Service",
+            "Azure Cosmos DB"
+        ]
+    },
+    "japanwest": {
+        "regionName": "Japan West",
+        "location": "Osaka, Japan",
+        "pairedRegion": "Japan East",
+        "servicesAvailable": [
+            "Virtual Machines",
+            "Azure App Services",
+            "Azure Functions",
+            "Azure SQL Database",
+            "Azure Kubernetes Service",
+            "Azure Cosmos DB"
+        ]
+    },
+    "uksouth": {
+        "regionName": "UK South",
+        "location": "London, United Kingdom",
+        "pairedRegion": "UK West",
+        "servicesAvailable": [
+            "Virtual Machines",
+            "Azure App Services",
+            "Azure Functions",
+            "Azure SQL Database",
+            "Azure Kubernetes Service",
+            "Azure Cosmos DB"
+        ]
+    },
+    "ukwest": {
+        "regionName": "UK West",
+        "location": "Cardiff, United Kingdom",
+        "pairedRegion": "UK South",
+        "servicesAvailable": [
+            "Virtual Machines",
+            "Azure App Services",
+            "Azure Functions",
+            "Azure SQL Database",
+            "Azure Kubernetes Service",
+            "Azure Cosmos DB"
+        ]
+    },
+    "australiaeast": {
+        "regionName": "Australia East",
+        "location": "New South Wales, Australia",
+        "pairedRegion": "Australia Southeast",
+        "servicesAvailable": [
+            "Virtual Machines",
+            "Azure App Services",
+            "Azure Functions",
+            "Azure SQL Database",
+            "Azure Kubernetes Service",
+            "Azure Cosmos DB"
+        ]
+    },
+    "australiasoutheast": {
+        "regionName": "Australia Southeast",
+        "location": "Victoria, Australia",
+        "pairedRegion": "Australia East",
+        "servicesAvailable": [
+            "Virtual Machines",
+            "Azure App Services",
+            "Azure Functions",
+            "Azure SQL Database",
+            "Azure Kubernetes Service",
+            "Azure Cosmos DB"
+        ]
+    },
+    "canadacentral": {
+        "regionName": "Canada Central",
+        "location": "Toronto, Canada",
+        "pairedRegion": "Canada East",
+        "servicesAvailable": [
+            "Virtual Machines",
+            "Azure App Services",
+            "Azure Functions",
+            "Azure SQL Database",
+            "Azure Kubernetes Service",
+            "Azure Cosmos DB"
+        ]
+    },
+    "canadaeast": {
+        "regionName": "Canada East",
+        "location": "Quebec City, Canada",
+        "pairedRegion": "Canada Central",
+        "servicesAvailable": [
+            "Virtual Machines",
+            "Azure App Services",
+            "Azure Functions",
+            "Azure SQL Database",
+            "Azure Kubernetes Service",
+            "Azure Cosmos DB"
+        ]
+    }
+}
