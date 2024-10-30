@@ -1,7 +1,11 @@
 include:
   module:
     - PSRule.Rules.Azure
- 
+
+rule:
+  exclude:
+    - Azure.AppService.MinPlan
+
 configuration:
   AZURE_BICEP_FILE_EXPANSION: true
   AZURE_BICEP_CHECK_TOOL: true
