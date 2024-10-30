@@ -36,11 +36,17 @@ jobs:
         run: |
           az account set --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-      - name: Deploy Bicep Template
-        run: |
-          az deployment sub create \
-            --name ${{ github.run_id }} \
-            --template-file deploy/main.bicep \
-            --location ${{ env.AZURE_REGION }} \
-            --parameters subIdSharedServices=${{ secrets.AZURE_SUBSCRIPTION_ID_SS }} subIdSampleApi=${{ secrets.AZURE_SUBSCRIPTION_ID }}
-            --what-if
+      - name: Preview Deployment
+        uses: azure/bicep-deploy@v1
+        with:
+          type: deployment
+          operation: whatif
+          name: ${{ github.run_id }}
+          location: ${{ env.AZURE_REGION }}
+          scope: subscription
+          template-file: deploy/main.bicep
+          parameters: |
+            {
+              "subIdSharedServices": "${{ secrets.AZURE_SUBSCRIPTION_ID_SS }}",
+              "subIdSampleApi": "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
+            }
