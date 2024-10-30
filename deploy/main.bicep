@@ -25,16 +25,16 @@ param roleDefinitionId string = subscriptionResourceId(
 )
 
 @description('The subscription ID for the shared services subscription')
-param subIdSharedServices string = 'c2678acf-6c55-482b-9021-8d2021597bb9'
+param subIdSharedServices string = '00000000-0000-0000-0000-000000000000'
 
 @description('Subscription ID for the File Transfer application')
 param subIdSampleApi string = '00000000-0000-0000-0000-000000000000'
 
 @description('The SKU for the App Service Plan.')
-param aspSkuName string = 'F1'
+param aspSkuName string = 'B1'
 
 @description('The Docker image to deploy to the web application')
-param dockerImage string = 'latzox.azurecr.io/sample-azure-app-service-api:1.0.0'
+param dockerImage string = 'latzox.azurecr.io/sample-azure-app-service-api:latest'
 
 @description('New Identity resource group.')
 param identityResourceGroup string = 'rg-identitysampleapi-prod-001'
@@ -83,7 +83,7 @@ module roleAssingment 'roleassignment/role.bicep' = if (deployRoleAssignment) {
 }
 
 @description('Deploy the web application')
-module app 'api/api.bicep' = if (deployApi) {
+module app 'app/app.bicep' = if (deployApi) {
   name: 'app-deployment'
   scope: resourceGroup(subIdSampleApi, apiResourceGroup)
   params: {
