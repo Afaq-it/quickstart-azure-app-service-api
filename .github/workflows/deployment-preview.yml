@@ -44,6 +44,7 @@ jobs:
           name: ${{ github.run_id }}
           location: ${{ env.AZURE_REGION }}
           scope: subscription
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           template-file: deploy/main.bicep
           parameters: |
             {
