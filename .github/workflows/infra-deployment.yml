@@ -1,4 +1,4 @@
-name: Deployment Preview
+name: Infra Deployment
 
 run-name: >
   ${{ github.workflow }}: ${{ github.event_name }} for ${{ github.ref_name }} by @${{ github.actor }}
@@ -17,7 +17,7 @@ env:
   AZURE_REGION: 'switzerlandnorth'
 
 jobs:
-  deploy-bicep:
+  Preview:
     runs-on: ubuntu-latest
     environment: preview
 
@@ -41,6 +41,41 @@ jobs:
         with:
           type: deployment
           operation: whatIf
+          name: ${{ github.run_id }}
+          location: ${{ env.AZURE_REGION }}
+          scope: subscription
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          template-file: deploy/main.bicep
+          parameters: |
+            {
+              "subIdSharedServices": "${{ secrets.AZURE_SUBSCRIPTION_ID_SS }}",
+              "subIdSampleApi": "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
+            }
+  Prod:
+    runs-on: ubuntu-latest
+    environment: production
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Azure CLI Login
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Set Azure Subscription
+        run: |
+          az account set --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Preview Deployment
+        uses: azure/bicep-deploy@v1
+        with:
+          type: deployment
+          operation: create
           name: ${{ github.run_id }}
           location: ${{ env.AZURE_REGION }}
           scope: subscription
