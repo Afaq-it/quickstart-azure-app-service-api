@@ -1,0 +1,36 @@
+name: Integration
+
+run-name: >
+  ${{ github.workflow }}: ${{ github.event_name }} for ${{ github.ref_name }} by @${{ github.actor }}
+
+on:
+  push:
+    paths:
+     - 'deploy/**'
+
+jobs:
+  Integration:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+        
+    - name: Install Bicep CLI
+      run: |
+        az bicep install
+        az bicep version
+
+    - name: Validate and Test Bicep modules
+      run: |
+        for file in $(find . -name '*.bicep'); do
+          echo "Validating $file"
+          az bicep build --file $file
+        done
+
+    - name: Test Azure Well-Architected Framework with PSRule
+      uses: Microsoft/ps-rule@v2.9.0
+      with:
+        modules: PSRule.Rules.Azure
+        inputType: inputPath
+        inputPath: 'deploy/main.bicep'
