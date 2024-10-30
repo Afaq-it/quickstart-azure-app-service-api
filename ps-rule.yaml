@@ -5,6 +5,8 @@ include:
 rule:
   exclude:
     - Azure.AppService.MinPlan
+    - Azure.AppService.AvailabilityZone
+    - Azure.AppService.PlanInstanceCount
 
 configuration:
   AZURE_BICEP_FILE_EXPANSION: true
