@@ -6,7 +6,7 @@ param webAppNameBase string
 
 @description('The tags to apply to the resources')
 param tags object = {
-  workload: 'File Transfer'
+  workload: 'Sample API'
   topic: 'Identity'
   environment: 'Production'
 }
