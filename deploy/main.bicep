@@ -49,12 +49,22 @@ param acrResourceGroup string = 'rg-acr-prod-001'
 resource identityRg 'Microsoft.Resources/resourceGroups@2024-03-01' = {
   name: identityResourceGroup
   location: deploymentLocation
+  tags: {
+    workload: 'Sample App Service API'
+    topic: 'Identity'
+    environment: 'Production'
+  }
 }
 
 @description('The resource group for the web application')
 resource apiRg 'Microsoft.Resources/resourceGroups@2024-03-01' = {
   name: apiResourceGroup
   location: deploymentLocation
+  tags: {
+    workload: 'Sample App Service API'
+    topic: 'API'
+    environment: 'Production'
+  }
 }
 
 @description('The user-assigned managed identity for the web application')
@@ -91,6 +101,7 @@ module app 'app/app.bicep' = if (deployApi) {
     dockerImage: dockerImage
     webAppNameBase: webAppNameBase
     managedIdentityId: roleAssingment.outputs.managedIdentityId
+    managedIdentityClientId: roleAssingment.outputs.managedIdentityClientId
   }
   dependsOn: [
     apiRg

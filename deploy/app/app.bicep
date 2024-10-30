@@ -13,6 +13,9 @@ param dockerImage string
 @description('The user-assigned managed identity for the api')
 param managedIdentityId string
 
+@description('The client ID of the user-assigned managed identity for the api')
+param managedIdentityClientId string
+
 @description('The tags to apply to the resources')
 param tags object = {
   workload: 'File Transfer'
@@ -28,14 +31,16 @@ resource appServicePlans 'Microsoft.Web/serverfarms@2023-12-01' =  {
   kind: 'linux'
   properties: {
     reserved: true
+    zoneRedundant: true
   }	
   sku: {
     name: aspSkuName
+    capacity: 1
   }
 }
 
 @description('Deploy a web application for each region specified')
-resource webApps 'Microsoft.Web/sites@2023-12-01' =  {
+resource webApp 'Microsoft.Web/sites@2023-12-01' =  {
   name: 'app-${webAppNameBase}'
   location: location
   kind: 'app,linux,container'
@@ -48,11 +53,27 @@ resource webApps 'Microsoft.Web/sites@2023-12-01' =  {
   }
   properties: {
     siteConfig: {
-      acrUserManagedIdentityID: managedIdentityId
+      minTlsVersion: '1.2'
+      http20Enabled: true
+      acrUseManagedIdentityCreds: true
+      acrUserManagedIdentityID: managedIdentityClientId
       linuxFxVersion: 'DOCKER|${dockerImage}'
       appSettings: [
       ]
     }
+    httpsOnly: true
+    clientAffinityEnabled: false
     serverFarmId: appServicePlans.id
+  }
+}
+
+resource acr 'Microsoft.Web/sites/sitecontainers@2023-12-01' = {
+  name: 'deploy-container'
+  parent: webApp
+  properties: {
+    image: dockerImage
+    isMain: true
+    authType: 'UserAssigned'
+    userManagedIdentityClientId: managedIdentityClientId
   }
 }
