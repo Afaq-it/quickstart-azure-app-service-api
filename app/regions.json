@@ -99,7 +99,6 @@
             "Azure App Services",
             "Azure Functions",
             "Azure SQL Database",
-            "Azure Kubernetes Service",
             "Azure Cosmos DB"
         ]
     },
