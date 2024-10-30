@@ -40,6 +40,6 @@ jobs:
 
       - name: Build and Push Docker Image to ACR
         run: |
-          cd api
+          cd app
           docker build -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} .
           docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
