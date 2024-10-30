@@ -31,7 +31,6 @@ resource appServicePlans 'Microsoft.Web/serverfarms@2023-12-01' =  {
   kind: 'linux'
   properties: {
     reserved: true
-    zoneRedundant: true
   }	
   sku: {
     name: aspSkuName
