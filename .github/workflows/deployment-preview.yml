@@ -38,9 +38,9 @@ jobs:
 
       - name: Deploy Bicep Template
         run: |
-          az deployment tenant create \
+          az deployment sub create \
             --name ${{ github.run_id }} \
             --template-file deploy/main.bicep \
             --location ${{ env.AZURE_REGION }} \
-            --parameters subIdSharedServices=${{ secrets.AZURE_SUBSCRIPTION_ID_SS }} subIdAzureLatency=${{ secrets.AZURE_SUBSCRIPTION_ID }}
+            --parameters subIdSharedServices=${{ secrets.AZURE_SUBSCRIPTION_ID_SS }} subIdSampleApi=${{ secrets.AZURE_SUBSCRIPTION_ID }}
             --what-if
