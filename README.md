@@ -1,4 +1,4 @@
-# Sample Azure App Service API
+# Quickstart Azure App Service API
 
 This repository serves as a template for creating an Azure App Service API. It provides a basic structure and setup to help you get started quickly.
 
