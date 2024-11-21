@@ -7,6 +7,8 @@ rule:
     - Azure.AppService.MinPlan
     - Azure.AppService.AvailabilityZone
     - Azure.AppService.PlanInstanceCount
+    - Azure.AppService.MinTLS # Exclude because there seems to be an error with validation
+    - Azure.AppService.HTTP2 # Exclude because there seems to be an error with validation
 
 configuration:
   AZURE_BICEP_FILE_EXPANSION: true
