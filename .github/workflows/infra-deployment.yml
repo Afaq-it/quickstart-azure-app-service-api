@@ -37,7 +37,7 @@ jobs:
           az account set --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: Preview Deployment
-        uses: azure/bicep-deploy@v1
+        uses: azure/bicep-deploy@bed0974555908ee0609c2b50aceb984cb50ea68b
         with:
           type: deployment
           operation: whatIf
@@ -72,7 +72,7 @@ jobs:
           az account set --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: Preview Deployment
-        uses: azure/bicep-deploy@v1
+        uses: azure/bicep-deploy@bed0974555908ee0609c2b50aceb984cb50ea68b
         with:
           type: deployment
           operation: create
